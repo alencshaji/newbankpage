@@ -1,50 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <section>
     <!-- <h1>{{data}}</h1> -->
-        <div class="container">
-          <div class="user signinBx">
-            <div class="imgBx"><img src="https://wallpapercave.com/dwp1x/wp4316561.jpg" alt="" /></div>
-            <div class="formBx">
-              <form action="" onsubmit="return false;">
-                <h2>Sign In</h2>
-                <input  id="username" type="text" name="username" placeholder="username" />
-                <input  id="pw" type="password" name="password" placeholder="Password" />
-                <button type="button" (click)="login()">Login</button>
-                <!-- routerLink="/home" -->
-                <p class="signup">
-                  Don't have an account ?
-                  <a href="javascript:void(0);" (click)="toggleForm()">Sign Up.</a>
-                </p>
-              </form>
-            </div>
-          </div>
-          <div class="user signupBx">
-            <div class="formBx">
-              <form action="" onsubmit="return false;">
-                <h2>Create an account</h2>
-                <input id="name" type="text" name="user" placeholder="Username" />
-                <input id="email" type="email" name="" placeholder="Email Address" />
-                <input id="pswd" type="passwd" name="" placeholder="Create Password" />
-                <input type="password" name="password" placeholder="Confirm Password" />
-                <button type="button" routerLink="/home">Sign Up</button>
-                <p class="signup">
-                  Already have an account ?
-                  <a href="javascript:void(0);" (click)="toggleForm()" >Sign in.</a>
-                </p>
-              </form>
-            </div>
-            <div class="imgBx"><img src="https://wallpapercave.com/dwp1x/wp6602998.jpg" alt="" /></div>
-          </div>
+    <div class="container">
+      <div class="user signinBx">
+        <div class="imgBx"><img src="https://wallpapercave.com/dwp1x/wp4316561.jpg" alt="" /></div>
+        <div class="formBx">
+          <form action="" [formGroup]="loginForm">
+            <h2>Sign In</h2>
+            <form action=""[formGroup]="loginForm" >
+              <input id="username" formControlName="acno" type="text" name="uname" placeholder="Account number" />
+              <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched">
+                <h6 class="error-login">Invalid Account Number</h6>
+              </div>
+              <input id="pw" formControlName="psw" type="password" name="psw" placeholder="Password" />
+              <div *ngIf="this.loginForm.get('psw')?.errors && this.loginForm.get('psw')?.touched">
+                <h6 class="error-login">Invalid Password</h6>
+              </div>
+            </form>
+            <button type="button" (click)="login()">Login</button>
+            <p class="signup">
+              Don't have an account ?
+              <a href="javascript:void(0);" (click)="toggleForm()">Sign Up.</a>
+            </p>
+          </form>
         </div>
-      </section>
+      </div>
+      <div class="user signupBx">
+        <div class="formBx">
+          <form [formGroup]="signupForm" action="" onsubmit="return false;">
+            <h2>Create an account</h2>
+            <input id="name" formControlName="acno" type="text" name="acno" placeholder="Account number" />
+            <div *ngIf="this.signupForm.get('acno')?.errors && this.signupForm.get('acno')?.touched">
+              <h6 class="error">Invalid Account Number</h6>
+            </div>
+            <input id="email" formControlName="uname" type="name" name="uname" placeholder="Username" />
+            <div *ngIf="this.signupForm.get('uname')?.errors && this.signupForm.get('uname')?.touched">
+              <h6 class="error">Invalid Username</h6>
+            </div>
+            <input id="pswd" formControlName="psw" type="password" name="psw" placeholder="Create Password" />
+            <div *ngIf="this.signupForm.get('psw')?.errors && this.signupForm.get('psw')?.touched">
+              <h6 class="error">Invalid Password</h6>
+            </div>
+            <input type="password" formControlName="cpsw" name="cpsw" placeholder="Confirm Password" />
+            <div *ngIf="pswCheck">
+              <h6 class="error">Passowrd doesn't match</h6>
+            </div>
+
+            <button type="submit" (click)="signup()">Sign Up</button>
+            <p class="signup">
+              Already have an account ?
+              <a href="javascript:void(0);" (click)="toggleForm()">Sign in.</a>
+            </p>
+          </form>
+        </div>
+        <div class="imgBx"><img src="https://wallpapercave.com/dwp1x/wp6602998.jpg" alt="" /></div>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>
-
-

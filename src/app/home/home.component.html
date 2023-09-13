@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
   <div class="container_">
     <div class="main">
       <div class="left">
-        <h1>Stand out from <br> the crowd</h1>
+        <h1 class="left-text">Hi {{name}} ,👋</h1>
+        <!-- <h1>Stand out from <br> the crowd</h1> -->
         <p class="text-design">Take your financial life online. Your Easybank <br> account will be a one-stop-shop for
           spending,<br> saving,
           budgeting, investing, and much more.</p>
@@ -30,18 +30,18 @@
         <div class="card_">
           <img src="https://svgshare.com/i/JpQ.svg" class="card-img-top" alt="img">
           <div class="card-body">
-            <h2 class="card-tleti title">View Profile</h2>
+            <h2 class="card-title title">View Profile</h2>
             <p class="card-text">
-              By this, you gain a comprehensive overview of your account details, transactions, and
-              financial activities, all conveniently accessible at your fingertips.
+              Get a comprehensive view of your account details, transactions,
+               and financial activities—all at your fingertips.
             </p>
           </div>
           <div class="card-btn">
-            <button href="" class="card-link">Go ></button>
+            <button href="" class="card-link " data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="profile()">Go ></button>
           </div>
         </div>
         <div class="card_">
-          <img src="https://svgshare.com/i/JpQ.svg" class="card-img-top" alt="img">
+          <img src="https://svgshare.com/i/Joj.svg" class="card-img-top" alt="img">
           <div class="card-body">
             <h2 class="card-title title">Online Banking</h2>
             <p class="card-text">
@@ -50,26 +50,26 @@
             </p>
           </div>
           <div class="card-btn">
-            <button href="" class="card-link">Go ></button>
+            <button href="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" class="card-link ">Go ></button>
           </div>
         </div>
         <div class="card_">
           <img src="https://svgshare.com/i/JpQ.svg" class="card-img-top" alt="img">
-          <div class="card-body">
+          <div class="card-body ">
             <h2 class="card-title title">Balance Enquiry</h2>
             <p class="card-text">
-              Instantly check account balance online. Secure, convenient, and empowering.
-              Effortlessly manage your finances anytime, anywhere.
+              Check your account balance securely online, enabling effortless financial 
+              management anytime with convenience.
             </p>
           </div>
-          <div class="card-btn">
-            <button   class="card-link"(click)="openModal()" type="button">Go ></button>
+          <div class="card-btn ">
+            <button href="" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getBalance()" class="card-link">Go ></button>
           </div>
         </div>
         <div class="card_">
-          <img src="https://svgshare.com/i/JpQ.svg" class="card-img-top" alt="img">
+          <img src="https://res.cloudinary.com/db8ufjm93/image/upload/v1611002756/easybank/icon-api_j8tssd.svg" class="card-img-top" alt="img">
           <div class="card-body">
-            <h2 class="card-title title">Account Statement</h2>
+            <h2 class="card-title summary title">Passbook</h2>
             <p class="card-text">
               Our modern web and mobile applications allow you to keep
               track of your finances wherever you are in the world.
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div class="card_">
-          <img src="https://svgshare.com/i/JpQ.svg" class="card-img-top" alt="img">
+          <img src="https://svgshare.com/i/Jp4.svg" class="card-img-top" alt="img">
           <div class="card-body">
             <h2 class="card-title title">Settings</h2>
             <p class="card-text">
@@ -97,7 +97,7 @@
           <div class="card-body">
             <h2 class="card-title title">Log Out</h2>
             <p class="card-text">
-              Ready to leave? Log out securely and thank you for banking with us today.
+              Securely log out and thank you for choosing our bank. We appreciate your business today.
             </p>
           </div>
           <div class="card-btn">
@@ -107,34 +107,91 @@
       </div>
     </div>
   </div>
-  <!--  -->
 
-  <!-- Modal -->
-  <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal Title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
+
+
+
+<!-- Modal -->
+
+<!-- view profile -modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog container">
+    <div id="modelprofile1" class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Profile</h1>
+      </div>
+      <div class="modal-body profile-view">
+        <div id="photo1">
+         <img src="https://publicdomainvectors.org/tn_img/abstract-user-flat-4.webp" alt="" class="image-profile-view">
         </div>
-        <div class="modal-body">
-          Modal content goes here.
+        <div class="details-profile">
+          <h6>Username   : {{name}}</h6>
+          <h6>A/c Number : {{acno}}</h6>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+      </div>
+      <div class="modal-footer container">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Online payment -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title container" id="offcanvasExampleLabel">Money Transfer</h4>
+    <button type="button" class="btn-close"  data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body container"><br>
+    <div >
+      <form>
+        <div id="a1" class="mb-3 ">
+          <label id="mtlabl1" for="exampleInputEmail1" class="form-label">Recipient Account Number</label>
+          <input placeholder="Recipient Account Number" type="number" class="form-control" >
+        </div>
+        <div id="a1" class="mb-3">
+          <label id="mtlabl2" for="exampleInputEmail1" class="form-label">IFSC Code</label>
+          <input placeholder="IFSC CODE" type="text" class="form-control">
+        </div>
+        <div id="a1" class="mb-3">
+          <label id="mtlabl3" for="exampleInputPassword1" class="form-label">Amount</label>
+          <input placeholder="Amount IN Rupees" type="number" class="form-control">
+        </div>
+        <div id="a1" class="mb-3">
+          <label id="mtlabl4" for="exampleInputPassword1" class="form-label">Password</label>
+          <input placeholder="Enter Password" type="password" class="form-control">
+        </div>
+        <br>
+        <button style="background-color: rgb(9, 247, 9);width: 100%;" type="button" class="btn btn-primary">Send Money</button>
+<br><br>
+        <div class="modal-footer ">
+          <button style="background-color: red; color: #fafafa; width: 100%;" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button> </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
+<!-- Balance enquiry -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Hello {{name}}</h2>
+      </div>
+      <div class="modal-body image-bal">
+        <img src="https://i.postimg.cc/MH3Jtjxm/piggy-removebg-preview.png" alt="">
+        <p>Available Balance : {{balance}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!--  -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+ 
 </body>
 </html>
 

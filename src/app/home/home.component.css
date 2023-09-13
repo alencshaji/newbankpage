@@ -64,7 +64,7 @@
 }
 
 .card-body h2 {
-    text-align: left !important;
+    text-align: center;
     margin: 1rem 0;
 }
 
@@ -72,9 +72,25 @@
     display: flex;
     flex-direction: column;
 }
-
+.title{
+    margin-top: 1rem;
+    font-size:1.5rem;
+}
+.card-link {
+    display: block; /* Change from flex to block */
+    margin-top: 1rem;
+    text-align: center; /* Center-align the button text */
+    padding: 0.5rem 1rem; /* Add padding for better button appearance */
+    background: linear-gradient(rgb(68, 184, 74), rgb(27, 156, 151));
+    border: none;
+    border-radius: 5rem;
+    color: #fff;
+    text-decoration: none;
+    width: fit-content; /* Adjust the button width as needed */
+    margin: 0 auto; /* Center the button horizontally */
+  }
+  
 .card-btn{
-    padding: .3rem;
     background:linear-gradient(rgb(68, 184, 74),rgb(27, 156, 151));
     width: fit-content;
     margin-top: 1rem;
@@ -88,9 +104,36 @@
     text-decoration: none;
 }
 .card-btn :hover{
-    font-size: 1.5rem;
+    background:linear-gradient(rgb(95, 160, 99),rgb(85, 151, 149));
+    font-weight: 500;
     transition: .5s;
 }
+/* profile view */
+.profile-view{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.details-profile {
+    margin: 0 1rem;
+}
+.details-profile h6{
+    font-size: .8rem;
+}
+.image-profile-view{
+    height: 4rem;
+    width: 4rem;
+}
+
+/* balance enquiry */
+.image-bal{
+    display: flex;
+    align-items: center;
+}
+.left .left-text{
+    margin: 2rem 0rem;
+}
+
 
 @media screen and (max-width: 900px) {
     .cards {
@@ -103,7 +146,17 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
+@media screen and (max-width: 700px) {
+    .main {
+       flex-direction: column;
+    }
+    .right{
+        margin-top: 2rem;
+    }
+    .right img{
+        height:10rem;
+    }
+}
 @media screen and (max-width: 628px) {
     .cards {
         display: flex;
@@ -111,3 +164,10 @@
         justify-content: center;
     }
 }
+
+@media screen and (max-width: 628px) {
+    .image-bal{
+       flex-direction: column;
+    }
+}
+
